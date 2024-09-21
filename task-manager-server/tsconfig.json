@@ -18,6 +18,9 @@
     "noFallthroughCasesInSwitch": false,
 
     /** paths */
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "@app": ["src/app.module.ts"]
+    }
   }
 }

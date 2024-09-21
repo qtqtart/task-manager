@@ -1,10 +1,10 @@
-import js from "@eslint/js";
-import perfectionist from "eslint-plugin-perfectionist";
-import prettier from "eslint-plugin-prettier";
-import globals from "globals";
-import ts from "typescript-eslint";
+import js from "@eslint/js"
+import perfectionist from "eslint-plugin-perfectionist"
+import prettier from "eslint-plugin-prettier"
+import globals from "globals"
+import ts from "typescript-eslint"
 
-const { config, plugin } = ts;
+const { config, plugin } = ts
 
 export default config(
   ...ts.configs.recommended,
@@ -25,4 +25,4 @@ export default config(
     },
   },
   perfectionist.configs["recommended-alphabetical"],
-);
+)
