@@ -8,7 +8,14 @@
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main",
     "f:prettier": "prettier --write .",
-    "f:eslint": "eslint --fix ."
+    "f:eslint": "eslint --fix .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "bun run f:prettier",
+      "bun run f:eslint"
+    ]
   },
   "dependencies": {
     "@nestjs/common": "10.0.0",
@@ -26,6 +33,8 @@
     "eslint-plugin-perfectionist": "3.6.0",
     "eslint-plugin-prettier": "5.2.1",
     "globals": "15.9.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "3.3.3",
     "source-map-support": "0.5.21",
     "ts-loader": "9.4.3",
