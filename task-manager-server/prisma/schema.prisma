@@ -13,21 +13,74 @@ enum UserRole {
 }
 
 model User {
-  id                 String   @id @default(uuid())
+  id                 String    @id @default(uuid())
   //
-  createdAt          DateTime @default(now()) @map("created_at")
-  updatedAt          DateTime @updatedAt @map("updated_at")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
   //
-  email              String   @unique
+  email              String    @unique
   password           String
   //
-  role               UserRole @default(USER)
+  role               UserRole  @default(USER)
   //
-  firstName          String?  @map("first_name")
-  lastName           String?  @map("last_namez")
+  firstName          String?   @map("first_name")
+  lastName           String?   @map("last_name")
   //
-  isVerifiedEmail    Boolean  @default(false) @map("is_verify_email")
-  isTwoFactorEnabled Boolean  @default(false) @map("is_two_factor_enabled")
+  isVerified         Boolean   @default(false) @map("is_verified")
+  isTwoFactorEnabled Boolean   @default(false) @map("is_two_factor_enabled")
+  //
+  accounts           Account[]
+  tokens             Token[]
 
   @@map("users")
+}
+
+enum AccountMethod {
+  CREDENTIAL
+  GOOGLE
+}
+
+model Account {
+  id           String        @id @default(uuid())
+  //
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  //
+  type         String
+  provider     String
+  //
+  method       AccountMethod
+  //
+  refreshToken String?       @map("refresh_token")
+  accessToken  String?       @map("access_token")
+  //
+  expiresAt    DateTime?     @map("expires_at")
+  //
+  user         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String?       @map("user_id")
+
+  @@map("accounts")
+}
+
+enum TokenType {
+  VERIFICATION
+  TWO_FACTOR
+  RESET_PASSWORD
+}
+
+model Token {
+  id        String    @id @default(uuid())
+  //
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  //
+  token     String    @unique
+  type      TokenType
+  //
+  expiredAt DateTime  @map("expired_at")
+  //
+  user      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?   @map("user_id")
+
+  @@map("tokens")
 }
