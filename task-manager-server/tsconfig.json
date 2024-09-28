@@ -17,10 +17,14 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
 
-    /** paths */
+    /** Paths */
     "baseUrl": "./",
     "paths": {
-      "@app": ["src/app.module.ts"]
+      "@app": ["src/app.module.ts"],
+      //
+      "@shared": ["libs/shared/src"],
+      //
+      "@shared/*": ["libs/shared/src/*"]
     }
   }
 }
