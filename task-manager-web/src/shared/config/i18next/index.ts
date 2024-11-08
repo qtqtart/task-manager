@@ -4,6 +4,7 @@ import HttpBackend from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next'
 import { ENV } from '../env'
 import { DEFAULT_LANGUAGE } from './languages'
+
 const { IS_DEV } = ENV
 
 i18next
