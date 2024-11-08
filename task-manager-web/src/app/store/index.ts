@@ -1,4 +1,4 @@
-export * from './lib/store'
-export * from './lib/use-app-dispatch'
-export * from './lib/use-app-selector'
-export * from './model/types'
+export { persistor, store } from './lib/store'
+export { useAppActions } from './lib/use-app-actions'
+export { useAppDispatch } from './lib/use-app-dispatch'
+export { useAppSelector } from './lib/use-app-selector'

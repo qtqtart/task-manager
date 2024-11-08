@@ -4,11 +4,14 @@ import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, R
 import storage from 'redux-persist/lib/storage'
 
 import { appReducer } from './app-reducer'
+import { themeModeSlice } from '@features/theme-mode'
+
+const whitelist = [themeModeSlice.name]
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [],
+  whitelist,
 }
 
 export const store = configureStore({
