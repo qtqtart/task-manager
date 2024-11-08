@@ -1,28 +1,38 @@
 import js from '@eslint/js'
+import i18nextPlugin from 'eslint-plugin-i18next'
+import perfectionistPlugin from 'eslint-plugin-perfectionist'
+import prettierPlugin from 'eslint-plugin-prettier'
+import reactPlugin from 'eslint-plugin-react'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import reactRefreshPlugin from 'eslint-plugin-react-refresh'
 import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import ts from 'typescript-eslint'
 
-export default tseslint.config(
+export default ts.config(
   { ignores: ['dist'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [...ts.configs.recommended, js.configs.recommended, i18nextPlugin.configs['flat/recommended']],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      ...globals.es2022,
+      ...globals.browser,
+      ...globals.node,
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      prettier: prettierPlugin,
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
+      'react-refresh': reactRefreshPlugin,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      ...reactPlugin.configs.recommended.rules,
+      ...reactHooksPlugin.configs.recommended.rules,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
   },
+  perfectionistPlugin.configs['recommended-natural'],
 )
