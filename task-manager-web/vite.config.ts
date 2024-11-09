@@ -1,13 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import reactPlugin from '@vitejs/plugin-react-swc'
 import { resolve } from 'path'
+import { defineConfig } from 'vite'
+import svgrPlugin from 'vite-plugin-svgr'
 
 export default defineConfig({
   build: {
     cssMinify: true,
     minify: true,
   },
-  plugins: [react()],
+  plugins: [reactPlugin(), svgrPlugin()],
   resolve: {
     alias: {
       '@app': resolve(__dirname, 'src/app'),

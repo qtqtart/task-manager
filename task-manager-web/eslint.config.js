@@ -9,14 +9,18 @@ import globals from 'globals'
 import ts from 'typescript-eslint'
 
 export default ts.config(
+  ...ts.configs.recommended,
+  js.configs.recommended,
+  i18nextPlugin.configs['flat/recommended'],
   { ignores: ['dist'] },
   {
-    extends: [...ts.configs.recommended, js.configs.recommended, i18nextPlugin.configs['flat/recommended']],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      ...globals.es2022,
-      ...globals.browser,
-      ...globals.node,
+      globals: {
+        ...globals.es2022,
+        ...globals.browser,
+        ...globals.node,
+      },
     },
     plugins: {
       prettier: prettierPlugin,
@@ -27,6 +31,8 @@ export default ts.config(
     rules: {
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
+      //
+      'react/react-in-jsx-scope': 'off',
     },
     settings: {
       react: {

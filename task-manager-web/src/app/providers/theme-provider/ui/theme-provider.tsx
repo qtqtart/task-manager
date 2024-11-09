@@ -1,6 +1,6 @@
 import { GlobalStyles } from '@app/styles'
 import { useThemeMode } from '@features/theme-mode'
-import { createTheme, StyledEngineProvider, ThemeProvider as MUIThemeProvider, CssBaseline } from '@mui/material'
+import { createTheme, CssBaseline, ThemeProvider as MUIThemeProvider, StyledEngineProvider } from '@mui/material'
 import { FC, PropsWithChildren, useMemo } from 'react'
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -9,11 +9,11 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const theme = useMemo(
     () =>
       createTheme({
-        shape: {
-          borderRadius: 8,
-        },
         palette: {
           mode: themeMode,
+        },
+        shape: {
+          borderRadius: 8,
         },
       }),
     [themeMode],

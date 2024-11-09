@@ -1,10 +1,10 @@
+import { themeModeSlice } from '@features/theme-mode'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import { appReducer } from './app-reducer'
-import { themeModeSlice } from '@features/theme-mode'
 
 const whitelist = [themeModeSlice.name]
 

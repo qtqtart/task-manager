@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import { GlobalStyles as MUIGlobalStyles } from '@mui/material'
+import { FC } from 'react'
 
 export const GlobalStyles: FC = () => {
   const styles = {
