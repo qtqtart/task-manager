@@ -1,17 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PaletteMode } from '@mui/material'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ThemeModeState } from '../model/types'
+import { getSystemThemeMode } from './get-system-theme-mode'
 
 const initialState: ThemeModeState = {
-  themeMode: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+  themeMode: getSystemThemeMode(),
 }
 
 export const themeModeSlice = createSlice({
   initialState,
   name: 'themeMode',
   reducers: {
-    toggleThemeMode: (state) => {
-      state.themeMode = state.themeMode === 'dark' ? 'light' : 'dark'
+    setThemeMode: (state, { payload }: PayloadAction<PaletteMode>) => {
+      state.themeMode = payload
     },
   },
 })
