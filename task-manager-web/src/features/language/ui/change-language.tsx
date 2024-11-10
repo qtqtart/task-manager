@@ -9,7 +9,7 @@ export const ChangeLanguage: FC = () => {
   const { languageOptions } = useLanguageOptions()
 
   return (
-    <FormControl variant="outlined">
+    <FormControl variant='outlined'>
       <Select
         onChange={({ target }) => {
           i18n.changeLanguage(target.value)
@@ -18,9 +18,9 @@ export const ChangeLanguage: FC = () => {
       >
         {languageOptions.map(({ icon, label, value }) => (
           <MenuItem key={value} value={value}>
-            <Stack alignItems="center" flexDirection="row" gap={1}>
+            <Stack alignItems='center' flexDirection='row' gap={1}>
               {icon}
-              <Typography textTransform="capitalize" variant="body2">
+              <Typography textTransform='capitalize' variant='body2'>
                 {label}
               </Typography>
             </Stack>

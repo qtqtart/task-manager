@@ -26,6 +26,7 @@ i18next
     interpolation: {
       escapeValue: false,
     },
+    lng: DEFAULT_LANGUAGE,
   })
 
 export default i18next

@@ -5,8 +5,8 @@ import { FC } from 'react'
 
 export const HomePage: FC = () => {
   return (
-    <Container maxWidth="lg">
-      <Stack alignItems="center" flexDirection="row" gap={1}>
+    <Container maxWidth='lg'>
+      <Stack alignItems='center' flexDirection='row' gap={1}>
         <ChangeThemeMode />
         <ChangeLanguage />
       </Stack>
