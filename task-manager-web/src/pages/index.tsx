@@ -1,3 +1,4 @@
+import { ThrowErrorButton } from '@app/providers/error-boundary'
 import { ChangeLanguage } from '@features/language'
 import { ChangeThemeMode } from '@features/theme-mode'
 import { Container, Stack } from '@mui/material'
@@ -9,6 +10,8 @@ export const HomePage: FC = () => {
       <Stack alignItems='center' flexDirection='row' gap={1}>
         <ChangeThemeMode />
         <ChangeLanguage />
+
+        <ThrowErrorButton />
       </Stack>
     </Container>
   )

@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { Provider as StoreProvider } from 'react-redux'
 import { PersistGate as PersistStoreProvider } from 'redux-persist/integration/react'
 
+import { ErrorBoundary } from './error-boundary'
 import { ThemeProvider } from './theme-provider'
 
 export const AppProvider: FC = () => {
@@ -14,7 +15,9 @@ export const AppProvider: FC = () => {
         <PersistStoreProvider persistor={persistor}>
           <Suspense>
             <ThemeProvider>
-              <HomePage />
+              <ErrorBoundary>
+                <HomePage />
+              </ErrorBoundary>
             </ThemeProvider>
           </Suspense>
         </PersistStoreProvider>
