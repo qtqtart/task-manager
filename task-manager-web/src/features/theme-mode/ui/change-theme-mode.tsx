@@ -5,14 +5,14 @@ import { useThemeMode } from '../lib/use-theme-mode'
 import { useThemeModeOptions } from '../lib/use-theme-mode-options'
 
 export const ChangeThemeMode: FC = () => {
-  const { setThemeMode, themeMode } = useThemeMode()
+  const { onChangeTheme, themeMode } = useThemeMode()
   const { themeModeOptions } = useThemeModeOptions()
 
   return (
     <FormControl variant='outlined'>
       <Select
         onChange={({ target }) => {
-          setThemeMode(target.value as PaletteMode)
+          onChangeTheme(target.value as PaletteMode)
         }}
         value={themeMode}
       >

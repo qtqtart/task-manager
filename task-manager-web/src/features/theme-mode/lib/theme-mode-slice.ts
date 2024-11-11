@@ -1,8 +1,8 @@
 import { PaletteMode } from '@mui/material'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getSystemThemeMode } from '@shared/utils/get-system-theme-mode'
 
 import { ThemeModeState } from '../model/types'
-import { getSystemThemeMode } from './get-system-theme-mode'
 
 const initialState: ThemeModeState = {
   themeMode: getSystemThemeMode(),

@@ -1,8 +1,9 @@
+import { router } from '@app/router'
 import { persistor, store } from '@app/store'
-import { HomePage } from '@pages'
 import { FC, Suspense } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider as StoreProvider } from 'react-redux'
+import { RouterProvider } from 'react-router-dom'
 import { PersistGate as PersistStoreProvider } from 'redux-persist/integration/react'
 
 import { ErrorBoundary } from './error-boundary'
@@ -16,7 +17,7 @@ export const AppProvider: FC = () => {
           <Suspense>
             <ThemeProvider>
               <ErrorBoundary>
-                <HomePage />
+                <RouterProvider router={router} />
               </ErrorBoundary>
             </ThemeProvider>
           </Suspense>
