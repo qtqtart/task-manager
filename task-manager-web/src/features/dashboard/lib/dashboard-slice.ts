@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getMediaQuery } from '@shared/utils/get-media-query'
+import { getMediaQuery } from '@shared/libs/get-media-query'
 
 import { DashboardState } from '../model/types'
 

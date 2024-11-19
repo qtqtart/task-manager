@@ -12,7 +12,7 @@ const persistConfig = {
   whitelist,
 }
 
-export const store = configureStore({
+export const appStore = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -22,6 +22,6 @@ export const store = configureStore({
   reducer: persistReducer(persistConfig, appReducer),
 })
 
-setupListeners(store.dispatch)
+setupListeners(appStore.dispatch)
 
-export const persistor = persistStore(store)
+export const appPersistor = persistStore(appStore)
